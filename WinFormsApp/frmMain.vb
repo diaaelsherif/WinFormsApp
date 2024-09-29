@@ -52,6 +52,7 @@ Public Class frmMain
 			employee.Name = TextBox2.Text
 			db.Employees.Update(employee)
 			db.SaveChanges()
+			MessageBox.Show("Updated employee data successfully!", "Updated Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
 		End If
 	End Sub
 
@@ -62,11 +63,32 @@ Public Class frmMain
 		Integer.TryParse(TextBox1.Text, id)
 		If id > 0 Then
 			employee.Id = id
+			employee.Name = TextBox2.Text
+			If employee IsNot Nothing And db.Employees.Where(Function(emp As Employee) emp.Id = id).FirstOrDefault() Is Nothing Then
+				db.Employees.Add(employee)
+				db.SaveChanges()
+				MessageBox.Show("Created new employee data successfully!", "Create Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
+			Else
+				MessageBox.Show("Unable to create new employee data!", "Create Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+			End If
+		Else
+			MessageBox.Show("Please enter a valid id!", "Create Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
 		End If
-		employee.Name = TextBox2.Text
-		If employee IsNot Nothing Then
-			db.Employees.Add(employee)
+	End Sub
+
+	Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+		Dim employee As Employee
+		Dim id As Integer
+		Integer.TryParse(TextBox1.Text, id)
+		If id > 0 Then
+			employee = db.Employees.Where(Function(emp As Employee) emp.Id = id).FirstOrDefault()
+		End If
+		If employee Is Nothing Then
+			MessageBox.Show("Unable to find employee data!", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+		Else
+			db.Employees.Remove(employee)
 			db.SaveChanges()
+			MessageBox.Show("Deleted employee data successfully!", "Delete Data", MessageBoxButtons.OK, MessageBoxIcon.Information)
 		End If
 	End Sub
 End Class
