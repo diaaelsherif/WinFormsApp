@@ -51,6 +51,22 @@ Public Class frmMain
 		Else
 			employee.Name = TextBox2.Text
 			db.Employees.Update(employee)
+			db.SaveChanges()
+		End If
+	End Sub
+
+	Private Sub btnCreate_Click(sender As Object, e As EventArgs) Handles btnCreate.Click
+		Dim employee As Employee
+		employee = New Employee()
+		Dim id As Integer
+		Integer.TryParse(TextBox1.Text, id)
+		If id > 0 Then
+			employee.Id = id
+		End If
+		employee.Name = TextBox2.Text
+		If employee IsNot Nothing Then
+			db.Employees.Add(employee)
+			db.SaveChanges()
 		End If
 	End Sub
 End Class
