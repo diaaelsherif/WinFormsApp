@@ -6,6 +6,9 @@ Imports WinFormsDtLib
 Imports WinFormsDtLib.Models
 
 Public Class frmMain
+	Private dbContextOptions As New DbContextOptions(Of WinFormsDataContext)
+	Private db As New WinFormsDataContext(dbContextOptions)
+
 	Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
 		End
 	End Sub
@@ -15,8 +18,6 @@ Public Class frmMain
 	End Sub
 
 	Private Sub btnRead_Click(sender As Object, e As EventArgs) Handles btnRead.Click
-		Dim dbContextOptions As New DbContextOptions(Of WinFormsDataContext)
-		Dim db As New WinFormsDataContext(dbContextOptions)
 		Dim employee As Employee
 		Dim id As Integer
 		Integer.TryParse(TextBox1.Text, id)
@@ -36,5 +37,23 @@ Public Class frmMain
 
 	Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
 		TextBox2.Text = ""
+	End Sub
+
+	Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+		'Update Customers
+		'SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+		'WHERE CustomerID = 1;
+		Dim employee As Employee
+		Dim id As Integer
+		Integer.TryParse(TextBox1.Text, id)
+		If id > 0 Then
+			employee = db.Employees.Where(Function(emp As Employee) emp.Id = id).FirstOrDefault()
+		End If
+		If employee Is Nothing Then
+			MessageBox.Show("Unable to find employee data!", "Update Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+		Else
+			employee.Name = TextBox2.Text
+			db.Employees.Update(employee)
+		End If
 	End Sub
 End Class
