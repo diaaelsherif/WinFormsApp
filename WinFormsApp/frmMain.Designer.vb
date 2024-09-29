@@ -31,6 +31,10 @@ Partial Class frmMain
 		btnUpdate = New Button()
 		btnDelete = New Button()
 		btnCreate = New Button()
+		Label1 = New Label()
+		TextBox1 = New TextBox()
+		Label2 = New Label()
+		TextBox2 = New TextBox()
 		MainFormMenuStrip.SuspendLayout()
 		SuspendLayout()
 		' 
@@ -40,7 +44,7 @@ Partial Class frmMain
 		MainFormMenuStrip.Items.AddRange(New ToolStripItem() {FileToolStripMenuItem, HelpToolStripMenuItem})
 		MainFormMenuStrip.Location = New Point(0, 0)
 		MainFormMenuStrip.Name = "MainFormMenuStrip"
-		MainFormMenuStrip.Size = New Size(622, 28)
+		MainFormMenuStrip.Size = New Size(466, 28)
 		MainFormMenuStrip.TabIndex = 0
 		MainFormMenuStrip.Text = "MenuStrip1"
 		' 
@@ -73,7 +77,7 @@ Partial Class frmMain
 		' 
 		' btnRead
 		' 
-		btnRead.Location = New Point(316, 392)
+		btnRead.Location = New Point(160, 97)
 		btnRead.Name = "btnRead"
 		btnRead.Size = New Size(94, 29)
 		btnRead.TabIndex = 2
@@ -82,7 +86,7 @@ Partial Class frmMain
 		' 
 		' btnUpdate
 		' 
-		btnUpdate.Location = New Point(416, 392)
+		btnUpdate.Location = New Point(260, 97)
 		btnUpdate.Name = "btnUpdate"
 		btnUpdate.Size = New Size(94, 29)
 		btnUpdate.TabIndex = 3
@@ -91,7 +95,7 @@ Partial Class frmMain
 		' 
 		' btnDelete
 		' 
-		btnDelete.Location = New Point(516, 392)
+		btnDelete.Location = New Point(360, 97)
 		btnDelete.Name = "btnDelete"
 		btnDelete.Size = New Size(94, 29)
 		btnDelete.TabIndex = 4
@@ -100,18 +104,54 @@ Partial Class frmMain
 		' 
 		' btnCreate
 		' 
-		btnCreate.Location = New Point(216, 392)
+		btnCreate.Location = New Point(60, 97)
 		btnCreate.Name = "btnCreate"
 		btnCreate.Size = New Size(94, 29)
 		btnCreate.TabIndex = 1
 		btnCreate.Text = "Create"
 		btnCreate.UseVisualStyleBackColor = True
 		' 
+		' Label1
+		' 
+		Label1.AutoSize = True
+		Label1.Location = New Point(12, 34)
+		Label1.Name = "Label1"
+		Label1.Size = New Size(92, 20)
+		Label1.TabIndex = 5
+		Label1.Text = "Employee Id"
+		' 
+		' TextBox1
+		' 
+		TextBox1.Location = New Point(216, 31)
+		TextBox1.Name = "TextBox1"
+		TextBox1.Size = New Size(238, 27)
+		TextBox1.TabIndex = 6
+		' 
+		' Label2
+		' 
+		Label2.AutoSize = True
+		Label2.Location = New Point(12, 67)
+		Label2.Name = "Label2"
+		Label2.Size = New Size(119, 20)
+		Label2.TabIndex = 7
+		Label2.Text = "Employee Name"
+		' 
+		' TextBox2
+		' 
+		TextBox2.Location = New Point(216, 64)
+		TextBox2.Name = "TextBox2"
+		TextBox2.Size = New Size(238, 27)
+		TextBox2.TabIndex = 8
+		' 
 		' frmMain
 		' 
 		AutoScaleDimensions = New SizeF(8F, 20F)
 		AutoScaleMode = AutoScaleMode.Font
-		ClientSize = New Size(622, 433)
+		ClientSize = New Size(466, 140)
+		Controls.Add(TextBox2)
+		Controls.Add(Label2)
+		Controls.Add(TextBox1)
+		Controls.Add(Label1)
 		Controls.Add(btnCreate)
 		Controls.Add(btnDelete)
 		Controls.Add(btnUpdate)
@@ -136,5 +176,9 @@ Partial Class frmMain
 	Friend WithEvents btnUpdate As Button
 	Friend WithEvents btnDelete As Button
 	Friend WithEvents btnCreate As Button
+	Friend WithEvents Label1 As Label
+	Friend WithEvents TextBox1 As TextBox
+	Friend WithEvents Label2 As Label
+	Friend WithEvents TextBox2 As TextBox
 
 End Class
