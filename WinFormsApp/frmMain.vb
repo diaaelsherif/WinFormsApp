@@ -40,9 +40,6 @@ Public Class frmMain
 	End Sub
 
 	Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-		'Update Customers
-		'SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
-		'WHERE CustomerID = 1;
 		Dim employee As Employee
 		Dim id As Integer
 		Integer.TryParse(TextBox1.Text, id)
