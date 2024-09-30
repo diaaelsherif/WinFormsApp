@@ -2,18 +2,14 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace WinFormsDtLib.Models;
 
 public partial class WinFormsDataContext : DbContext
 {
-    const string connString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=WinFormsData;Integrated Security=True;Encrypt=True";
-
-	public WinFormsDataContext()
+    public WinFormsDataContext()
     {
-
     }
 
     public WinFormsDataContext(DbContextOptions<WinFormsDataContext> options)
@@ -23,8 +19,10 @@ public partial class WinFormsDataContext : DbContext
 
     public virtual DbSet<Employee> Employees { get; set; }
 
+    public virtual DbSet<Manager> Managers { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(connString/*ConfigurationManager.ConnectionStrings["WinFormsDatabase"].ConnectionString*/);
+        => optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=WinFormsData;Integrated Security=True;Encrypt=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -39,6 +37,18 @@ public partial class WinFormsDataContext : DbContext
                 .IsRequired()
                 .HasMaxLength(10)
                 .IsFixedLength();
+        });
+
+        modelBuilder.Entity<Manager>(entity =>
+        {
+            entity.ToTable("Manager");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.Manager)
+                .HasForeignKey<Manager>(d => d.Id)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Manager_Employee");
         });
 
         OnModelCreatingPartial(modelBuilder);

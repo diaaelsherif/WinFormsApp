@@ -17,6 +17,14 @@
       {
          "Name": "[dbo].[Employee]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Manager]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[GetManager]",
+         "ObjectType": 1
       }
    ],
    "UiHint": null,

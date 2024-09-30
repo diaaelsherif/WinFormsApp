@@ -1,5 +1,7 @@
-﻿Imports System.Drawing.Imaging
+﻿Imports System.Configuration
+Imports System.Drawing.Imaging
 Imports System.Linq.Expressions
+Imports Microsoft.Data.SqlClient
 Imports Microsoft.EntityFrameworkCore
 Imports Microsoft.EntityFrameworkCore.Infrastructure.Internal
 Imports WinFormsDtLib
@@ -32,6 +34,9 @@ Public Class frmMain
 		Else
 			TextBox1.Text = employee.Id
 			TextBox2.Text = employee.Name
+			'Read manager name using stored procedure
+			Dim result As IEnumerable(Of GetManagerResult) = db.Database.SqlQuery(Of GetManagerResult)($"EXECUTE dbo.GetManager {employee.Id}")
+			TextBox3.Text = result.FirstOrDefault().ManagerName()
 		End If
 	End Sub
 

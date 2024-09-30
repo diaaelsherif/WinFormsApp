@@ -35,6 +35,8 @@ Partial Class frmMain
 		TextBox1 = New TextBox()
 		Label2 = New Label()
 		TextBox2 = New TextBox()
+		Label3 = New Label()
+		TextBox3 = New TextBox()
 		MainFormMenuStrip.SuspendLayout()
 		SuspendLayout()
 		' 
@@ -77,7 +79,7 @@ Partial Class frmMain
 		' 
 		' btnRead
 		' 
-		btnRead.Location = New Point(160, 97)
+		btnRead.Location = New Point(160, 155)
 		btnRead.Name = "btnRead"
 		btnRead.Size = New Size(94, 29)
 		btnRead.TabIndex = 2
@@ -86,7 +88,7 @@ Partial Class frmMain
 		' 
 		' btnUpdate
 		' 
-		btnUpdate.Location = New Point(260, 97)
+		btnUpdate.Location = New Point(260, 155)
 		btnUpdate.Name = "btnUpdate"
 		btnUpdate.Size = New Size(94, 29)
 		btnUpdate.TabIndex = 3
@@ -95,7 +97,7 @@ Partial Class frmMain
 		' 
 		' btnDelete
 		' 
-		btnDelete.Location = New Point(360, 97)
+		btnDelete.Location = New Point(360, 155)
 		btnDelete.Name = "btnDelete"
 		btnDelete.Size = New Size(94, 29)
 		btnDelete.TabIndex = 4
@@ -104,7 +106,7 @@ Partial Class frmMain
 		' 
 		' btnCreate
 		' 
-		btnCreate.Location = New Point(60, 97)
+		btnCreate.Location = New Point(60, 155)
 		btnCreate.Name = "btnCreate"
 		btnCreate.Size = New Size(94, 29)
 		btnCreate.TabIndex = 1
@@ -143,11 +145,29 @@ Partial Class frmMain
 		TextBox2.Size = New Size(238, 27)
 		TextBox2.TabIndex = 8
 		' 
+		' Label3
+		' 
+		Label3.AutoSize = True
+		Label3.Location = New Point(12, 100)
+		Label3.Name = "Label3"
+		Label3.Size = New Size(112, 20)
+		Label3.TabIndex = 9
+		Label3.Text = "Manager Name"
+		' 
+		' TextBox3
+		' 
+		TextBox3.Location = New Point(216, 97)
+		TextBox3.Name = "TextBox3"
+		TextBox3.Size = New Size(238, 27)
+		TextBox3.TabIndex = 10
+		' 
 		' frmMain
 		' 
 		AutoScaleDimensions = New SizeF(8F, 20F)
 		AutoScaleMode = AutoScaleMode.Font
-		ClientSize = New Size(466, 140)
+		ClientSize = New Size(466, 196)
+		Controls.Add(TextBox3)
+		Controls.Add(Label3)
 		Controls.Add(TextBox2)
 		Controls.Add(Label2)
 		Controls.Add(TextBox1)
@@ -180,5 +200,7 @@ Partial Class frmMain
 	Friend WithEvents TextBox1 As TextBox
 	Friend WithEvents Label2 As Label
 	Friend WithEvents TextBox2 As TextBox
+	Friend WithEvents Label3 As Label
+	Friend WithEvents TextBox3 As TextBox
 
 End Class
